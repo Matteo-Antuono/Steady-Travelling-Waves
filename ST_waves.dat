@@ -1,0 +1,27 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   Steady Travelling waves - FILE DAT   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+1.0        !!  'h0' (m)                   //  still water depth
+0.2        !!  'a0' (m)                   //  wave amplitude (i.e. HALF wave height)
+0          !!  'flag_lp'  (integer)       //  '0' = assignement of wave length   OR   '1' = assignement of wave period  
+10.0       !!  'T' (sec)  OR  'L' (m)     //  wave length or wave period according to the previous choice, namely 'flag_lp'
+1          !!  'flag_st'  (integer)       //  '0' = solution in space   OR   '1' = solution in time  
+200        !!  'nsample'  (integer)       //  number of sample points (in time or space according to the previous choice)
+0.0        !!  'v_current' (m/sec)        //  velocity of a current superimposed to the solution (NOTE: a positive sign indicates a current in the same directin of the wave)
+F          !!  'flag_no_drift' (logical)  //  'TRUE' if you want to eliminate the Drift velocity from the solution
+40         !!  'nsample_z' (integer)      //  number of sample points along the vertical direction between the seabed and the free surface
+test_10    !!  'filename'                 //  name of the output files (LOG, FS, FIELDS)
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+NOTE: the wave is assumed to propagate along DECREASING values of the x-axis.
+To invert the motion, it is sufficient to change sign to the velocity field (namely, to both horizontal and vertical components)
+
+NOTE: the drift velocity is eliminated by superimposing a current of the same magnitude in the opposite direction. 
+  This is done independently from the addition of a current through the variable 'v_current' 
+
+NOTE: the points along the vertical direction (i.e. 'nsample_z') are distributed uniformly over the water depth at a certain time/position.
+  As a consequence, the "z"  coordinates change according to the variations of the free surface (in time/space)
+
+REFERENCE for the analytic solution:
+  Antuono M., Steady periodic waves over a planar seabed: a global characterization, 
+              J. Fluid Mech. (2022), vol. 947, A18, doi:10.1017/jfm.2022.643
